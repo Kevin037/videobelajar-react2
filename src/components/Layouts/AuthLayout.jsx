@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Button, Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Footer from "../Fragments/Footer";
 
 function classNames(...classes) {
@@ -8,7 +7,12 @@ function classNames(...classes) {
   }
 
 const Authlayout = (props) => {
-    const {children, title, type, navType} = props
+    const {children, navType} = props
+    const handleLogout = () => {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+    
     return (
         <>
         <Disclosure as="nav" className="bg-white-800">
@@ -60,15 +64,15 @@ const Authlayout = (props) => {
                 </div>
                 <MenuItems
                   transition
-                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                  className="absolute right-0 z-10 mt-2 w-24 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                 >
                   <MenuItem>
-                    <Link
-                      to="/login"
-                      className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                    <Button
+                      onClick={handleLogout}
+                      className="block px-4 py-2 w-full text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden cursor-pointer"
                     >
                       Sign out
-                    </Link>
+                    </Button>
                   </MenuItem>
                 </MenuItems>
               </Menu>

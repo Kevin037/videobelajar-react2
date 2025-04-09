@@ -6,6 +6,7 @@ import { BannerContent } from "../Fragments/Content";
 import { Input, InputButton } from "../Elements/input";
 import { ButtonYellow } from "../Elements/button";
 
+const token = localStorage.getItem("token");
 const HomePage = () => {
 
 const [items,setItems] = useState([]);
@@ -14,6 +15,9 @@ const [activeTab, setActiveTab] = useState("all");
 const [tabs, setTabs] = useState([]);
 
 useEffect(() => {
+    if(token === null) {
+        window.location.href = "/login";
+    }
     setItems(getItem(activeTab));
     setTabs(getTabs());
 }, []);

@@ -1,13 +1,24 @@
 import InputForm from "../Elements";
-import { Link } from "react-router-dom";
-import { ButtonPrimary, ButtonSecondary, ButtonSpan } from "../Elements/button";
+import { ButtonPrimarySubmit, ButtonSecondary, ButtonSpan } from "../Elements/button";
 import { Card } from "../Elements/card";
 import { HeadAuth } from "./Content";
+import { useEffect } from "react";
+import { getToken } from "../../data";
 
+const token = localStorage.getItem("token");
 const Formlogin = () => {
-    const HandleLogin = () => {
+    const HandleLogin = (event) => {
+        event.preventDefault();
+        localStorage.setItem("token",getToken());
         window.location.href = "/";
     };
+
+    useEffect(() => {
+        if(token !== null) {
+            window.location.href = "/";
+        }
+    },[])
+
     return (
         <div className="space p-10 overflow-sm-hidden">
             <Card varian={`max-w-sm`}>
@@ -21,10 +32,10 @@ const Formlogin = () => {
                     <div className="mb-4 text-right">
                         <a className="text-sm">Lupa Password ?</a>
                     </div>
-                    <ButtonPrimary url="/">Masuk</ButtonPrimary>
+                    <ButtonPrimarySubmit type="submit">Masuk</ButtonPrimarySubmit>
                     <ButtonSecondary url="/register" varian="mt-2">Daftar</ButtonSecondary>
                     <div className="separator mt-4 mb-4">atau</div>
-                    <ButtonSpan url="/" varian="hover:bg-gray-50">
+                    <ButtonSpan type="submit" varian="hover:bg-gray-50">
                         <img src="../assets/logos_google.svg" className="w-5 h-5" alt="Google" />
                         Daftar dengan Google
                     </ButtonSpan>

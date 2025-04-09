@@ -25,6 +25,31 @@ export const ButtonTheme = (props) => {
   );
 }
 
+export const ButtonSubmitTheme = (props) => {
+  const {type, children, varian, onClick} = props
+  return (
+    <button 
+      className={`block text-center w-full py-2 rounded-theme transition ${varian} cursor-pointer`} 
+      type={type}
+      onClick={onClick}
+      >
+    {children}
+    </button>
+  );
+}
+
+export const ButtonPrimarySubmit = (props) => {
+  const {type, children, varian, onClick} = props
+  return (
+    <ButtonSubmitTheme 
+      type={type}
+      onClick={onClick}
+      varian={`bg-green-500 hover:bg-green-600 text-white ${varian}`}>
+    {children}
+    </ButtonSubmitTheme>
+  );
+}
+
 export const ButtonPrimary = (props) => {
   const {url, children, varian} = props
   return (
@@ -59,12 +84,13 @@ export const ButtonSecondary = (props) => {
 }
 
 export const ButtonSpan = (props) => {
-  const {url, children, varian} = props
+  const {type, children, varian, onClick} = props
   return (
-    <ButtonTheme 
-      url={url}
-      varian={`border flex items-center justify-center gap-2 ${varian}`}>
-    {children}
-    </ButtonTheme>
+      <ButtonSubmitTheme 
+        type={type}
+        onClick={onClick}
+        varian={`border flex items-center justify-center gap-2 ${varian}`}>
+      {children}
+       </ButtonSubmitTheme>
   );
 }
