@@ -8,7 +8,7 @@ function classNames(...classes) {
   }
 
 const Authlayout = (props) => {
-    const {children, navType} = props
+    const {children, navType, withFooter} = props
     const handleLogout = () => {
       localStorage.removeItem("token");
       window.location.href = "/login";
@@ -118,7 +118,7 @@ const Authlayout = (props) => {
       <div className="content">
       {children}
       </div>
-      {navType != "auth" && <Footer />}
+      {withFooter == true && <Footer />}
       </>
     )
 }

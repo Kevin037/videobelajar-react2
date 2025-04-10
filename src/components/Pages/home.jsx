@@ -27,9 +27,9 @@ useEffect(() => {
 }, [activeTab]);
 
  return (
-    <Authlayout title="Home" navType="home">
+    <Authlayout title="Home" navType="home" withFooter={true}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <section className="banner-hero banner-space">
+            <section className="banner-hero banner-space text-center">
                 <div className="banner-content">
                     <BannerContent 
                         title="Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video Interaktif!"

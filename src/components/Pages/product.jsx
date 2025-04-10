@@ -30,14 +30,17 @@ const toggle = (index) => {
 };
 
  return (
-    <Authlayout title="Home" navType="home">
+    <Authlayout title="Home" navType="home" withFooter={true}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <section className="banner-hero banner-space">
                 <div className="banner-content">
                     <BannerContent 
                         title="Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product Manager."
                         desc="Belajar bersama tutor profesional di Video Course. Kapanpun, di manapun."
-                    />
+                        varian="text-left"
+                    >
+                    <img className="mt-3" src="../assets/head_star.svg" alt="" />
+                    </BannerContent>
                 </div>
             </section>
 
@@ -124,7 +127,7 @@ const toggle = (index) => {
                     </Card>
                 </div>
                 <div className="col-span-1 ... mx-2 sm:mx-0">
-                    <ItemSpesification />
+                    <ItemSpesification isDetail={false} />
                 </div>
             </div>
             <h3 className="text-2xl font-weigh-200 mt-4">Video Pembelajaran Terkait Lainnya</h3>

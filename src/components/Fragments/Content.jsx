@@ -9,11 +9,12 @@ export const HeadAuth = (props) => {
 }
 
 export const BannerContent = (props) => {
-    const {title,desc} = props
+    const {title,desc,varian, children} = props
     return (
-        <>
+        <div className={varian}>
             <h2 className="text-3xl font-bold">{title}</h2>
             <p className="text-xs mt-3">{desc}</p>
-        </>
+            {children}
+        </div>
     )
 }

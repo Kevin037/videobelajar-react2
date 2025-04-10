@@ -169,6 +169,24 @@ const courseSections = [
     }
 ];
 
+const paymentMethods = {
+    "Transfer Bank": [
+        { name: "Bank BCA", key: "bca", icon: "../assets/bca.svg" },
+        { name: "Bank BNI", key: "bni", icon: "../assets/bni.svg" },
+        { name: "Bank BRI", key: "bri", icon: "../assets/bri.svg" },
+        { name: "Bank Mandiri", key: "mandiri", icon: "../assets/mandiri.svg" },
+    ],
+    "E-Wallet": [
+        { name: "Dana", key: "dana", icon: "../assets/dana.svg" },
+        { name: "OVO", key: "ovo", icon: "../assets/ovo.svg" },
+        { name: "LinkAja", key: "linkaja", icon: "../assets/linkaja.svg" },
+        { name: "Shopee Pay", key: "shopee", icon: "../assets/shopee.svg" },
+    ],
+    "Kartu Kredit/Debit": [
+        { name: "", key: "credit", icon: "/assets/credit.svg" },
+    ]
+};
+
 export const getItem = (params) => {
     if(params !== "all"){
         return items.filter(item => item.type === params);
@@ -196,4 +214,8 @@ export const getCourseSections = () => {
 
 export const getFacilities = () => {
     return facilities;
+}
+
+export const getPaymentMethods = () => {
+    return paymentMethods;
 }
