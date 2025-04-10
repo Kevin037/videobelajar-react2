@@ -4,7 +4,7 @@ const Footer = () => {
         <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 ...">
             <div className="col-span-1 ...">
-              <img src="assets/logo.svg" alt=""/>
+              <img src="../assets/logo.svg" alt=""/>
               <h6 className="mt-4">Gali Potensi Anda Melalui Pembelajaran Video di hariesok.id!</h6>
               <p className="mt-2">Jl. Usman Effendi No. 50 Lowokwaru, Malang</p>
               <p className="mt-2">+62-877-7123-1234</p>

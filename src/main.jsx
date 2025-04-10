@@ -5,6 +5,7 @@ import './index.css'
 import LoginPage from './components/Pages/login.jsx'
 import RegisterPage from './components/Pages/register.jsx'
 import HomePage from './components/Pages/home.jsx'
+import ProductPage from './components/Pages/product.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage/>
+  },
+  {
+    path: '/product',
+    element: <ProductPage/>
   }
 ])
 

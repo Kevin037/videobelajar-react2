@@ -123,6 +123,52 @@ const tabs = [
     }
 ];
 
+const courseSections = [
+    {
+      title: "Introduction to Course 1: Foundations of User Experience Design",
+      lessons: [
+        { title: "The basics of user experience design", duration: "12 Menit" },
+        { title: "Jobs in the field of user experience", duration: "12 Menit" },
+        { title: "The product development life cycle", duration: "12 Menit" },
+      ],
+    },
+    {
+      title: "Universal design, inclusive design, and equity-focused design",
+      lessons: [],
+    },
+    {
+      title: "Introduction to design sprints",
+      lessons: [],
+    },
+    {
+      title: "Introduction to UX research",
+      lessons: [],
+    },
+  ];
+
+  const facilities = [
+    {
+        img:"check.svg",
+        name:"Ujian Akhir"
+    },
+    {
+        img:"video.svg",
+        name:"49 Video"
+    },
+    {
+        img:"document.svg",
+        name:"7 Dokumen"
+    },
+    {
+        img:"certificate.svg",
+        name:"Sertifikat"
+    },
+    {
+        img:"pretest.svg",
+        name:"Pretest"
+    }
+];
+
 export const getItem = (params) => {
     if(params !== "all"){
         return items.filter(item => item.type === params);
@@ -142,4 +188,12 @@ export const getToken = () => {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return result;
+}
+
+export const getCourseSections = () => {
+    return courseSections;
+}
+
+export const getFacilities = () => {
+    return facilities;
 }

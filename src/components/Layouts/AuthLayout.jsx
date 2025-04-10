@@ -1,6 +1,7 @@
 import { Button, Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Footer from "../Fragments/Footer";
+import { Link } from 'react-router-dom';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -30,11 +31,13 @@ const Authlayout = (props) => {
             </div>
             <div className="flex flex-1 items-center sm:items-stretch">
               <div className="flex shrink-0 items-center">
+                <Link to="/">
                 <img
                   alt="Your Company"
                   src="../assets/logo.svg"
                   className="h-8 w-auto"
                 />
+                </Link>
               </div>
             </div>
             {navType != "auth" &&

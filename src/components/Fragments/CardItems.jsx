@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom"
+import { Card } from "../Elements/card"
+
 const CardItems = (props) => {
     const {id,photo,title,desc,avatar,user,user_position,user_company} = props
     return (
-        <div key={id} className="mt-3 mx-2 bg-white border border-gray-200 rounded-lg shadow-sm max-w-sm p-3 dark:border-gray-300 cursor-pointer hover:opacity-80">
+        <Link to={`/product/`}>
+        <Card key={id} varian="max-w-sm">
         <div className="grid grid-cols-3 md:grid-cols-1 ...">
             <div className="col-span-1 ...">
                 <img className="img-item" src={photo} alt="" />
@@ -31,7 +35,8 @@ const CardItems = (props) => {
                 <b><h5 className="price">Rp 300K</h5></b>
             </div>
         </div>
-    </div>
+    </Card>
+    </Link>
     )
 }
 
