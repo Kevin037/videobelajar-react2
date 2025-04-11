@@ -8,6 +8,7 @@ import HomePage from './components/Pages/home.jsx'
 import ProductPage from './components/Pages/product.jsx'
 import CheckoutPage from './components/Pages/checkout.jsx'
 import PaymentPage from './components/Pages/payment.jsx'
+import ChangePaymentPage from './components/Pages/change_payment.jsx'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: '/payment',
     element: <PaymentPage/>
+  },
+  {
+    path: '/change_payment',
+    element: <ChangePaymentPage/>
   }
 ])
 

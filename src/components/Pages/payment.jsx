@@ -1,8 +1,8 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Authlayout from "../Layouts/AuthLayout";
-import { ButtonPrimary, ButtonPrimarySubmit, ButtonSecondary, ButtonWhite } from "../Elements/button";
+import { ButtonPrimary, ButtonWhite } from "../Elements/button";
 import { Card } from "../Elements/card";
-import { H1, H2 } from "../Elements/heading";
+import { H1 } from "../Elements/heading";
 import { ItemSpesification } from "../Fragments/ItemSpesification";
 import { getHowToPay, getPaymentMethods } from "../../data";
 import { TransactionNominal } from "../Fragments/TransactionNominal";
@@ -13,7 +13,6 @@ import { PaymentTimer } from "../Fragments/PaymentTimer";
 const token = localStorage.getItem("token");
 const data = JSON.parse(localStorage.getItem("transactions"));
 const PaymentPage = () => {
-    const [selectedMethod, setSelectedMethod] = useState("");
     const [transaction, setTransaction] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
     const [openHowToPay, setOpenHowToPay] = useState("");
@@ -53,7 +52,7 @@ const PaymentPage = () => {
                         <TransactionNominal /><br />
                         <div className="grid grid-cols-1 md:grid-cols-2  ... gap-2 mt-2">
                             <div className="col-span-1 my-1"><ButtonWhite url="/change_payment">Ganti Metode Pembayaran</ButtonWhite></div>
-                            <div className="col-span-1 my-1"><ButtonPrimary url="/success">Bayar Sekarang</ButtonPrimary></div>
+                            <div className="col-span-1 my-1"><ButtonPrimary url="#">Bayar Sekarang</ButtonPrimary></div>
                         </div>
                     </Card>
                     <Card varian="md:mr-4">

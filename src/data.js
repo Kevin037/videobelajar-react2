@@ -241,6 +241,18 @@ export const getPaymentMethods = (key="") => {
     return found;
 }
 
+export const getPaymentMethodGroup = (key) => {
+    let found = null;
+    for (const group in paymentMethods) {
+        const method = paymentMethods[group].find(item => item.key === key);
+        if (method) {
+            found = group;
+            break;
+        }
+    }
+    return found;
+}
+
 export const getTransaction = () => {
     return JSON.parse(localStorage.getItem("transaction"));
 }

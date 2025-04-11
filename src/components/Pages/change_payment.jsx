@@ -1,41 +1,44 @@
 import { useEffect, useState } from "react";
 import Authlayout from "../Layouts/AuthLayout";
-import { getPaymentMethods } from "../../data";
 import { ButtonPrimarySubmit } from "../Elements/button";
 import { Card } from "../Elements/card";
 import { H1 } from "../Elements/heading";
 import { ItemSpesification } from "../Fragments/ItemSpesification";
-import { CheckCircle, ChevronDown } from "lucide-react";
+import { getPaymentMethodGroup, getPaymentMethods } from "../../data";
 import { TransactionNominal } from "../Fragments/TransactionNominal";
+import { CheckCircle, ChevronDown } from "lucide-react";
 
 const token = localStorage.getItem("token");
-const CheckoutPage = () => {
+const data = JSON.parse(localStorage.getItem("transactions"));
+const ChangePaymentPage = () => {
     const [paytmentMethods,setPaytmentMethods] = useState([]);
     const [openGroup, setOpenGroup] = useState("Transfer Bank");
     const [selectedMethod, setSelectedMethod] = useState("");
+    const [transaction, setTransaction] = useState("");
 
 useEffect(() => {
     if(token === null) {
         window.location.href = "/login";
     }
+    setTransaction(data);
     setPaytmentMethods(getPaymentMethods());
 }, []);
 
-const HandleCheckout = (event) => {
+useEffect(() => {
+    setSelectedMethod(transaction.metode);
+    setOpenGroup(getPaymentMethodGroup(transaction.metode));
+}, [transaction]);
+
+const UpdateTransaction = (event) => {
     if (selectedMethod === "") {
         alert("Pilih Metode Pembayaran");
         return false;
     }
-    const data = {
-        id: "1",
-        metode: selectedMethod,
-        qty: 1,
-        price: 250000,
-        name: "Video Belajar",
-    }
+    const data = transaction;
+    const updateData = {...data, metode: selectedMethod};
     
     event.preventDefault();
-    localStorage.setItem("transactions",JSON.stringify(data));
+    localStorage.setItem("transactions",JSON.stringify(updateData));
     window.location.href = "/payment";
 };
 
@@ -47,9 +50,12 @@ const HandleCheckout = (event) => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 ...">
                 <div className="col-span-2 order-2 md:order-1">
+                        <Card varian="md:mr-4 mt-4 py-6">
+                        <TransactionNominal />
+                    </Card>
                     <Card varian="md:mr-4">
                         <H1>Metode Pembayaran</H1><br />
-                        {paytmentMethods.map(([groupName, methods]) => (
+                        {Object.entries(paytmentMethods).map(([groupName, methods]) => (
                             <div key={groupName} className="bg-white rounded-xl shadow-sm">
                             <button
                                 className="w-full flex justify-between items-center px-4 py-3 font-medium mb-3"
@@ -94,10 +100,7 @@ const HandleCheckout = (event) => {
                             )}
                             </div>
                         ))}
-                    </Card>
-                    <Card varian="md:mr-4 mt-4 py-6">
-                        <TransactionNominal />
-                        <ButtonPrimarySubmit onClick={HandleCheckout} varian="w-full mt-4">Beli Sekarang</ButtonPrimarySubmit>
+                        <ButtonPrimarySubmit onClick={UpdateTransaction} varian="w-full mt-4">Bayar Sekarang</ButtonPrimarySubmit>
                     </Card>
                 </div>
                 <div className="col-span-1 ... mx-2 sm:mx-0 order-1 lg:order-2">
@@ -109,4 +112,4 @@ const HandleCheckout = (event) => {
  );
 }
 
-export default CheckoutPage
+export default ChangePaymentPage
