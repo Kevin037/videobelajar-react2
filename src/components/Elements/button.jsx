@@ -61,6 +61,17 @@ export const ButtonPrimary = (props) => {
   );
 }
 
+export const ButtonWhite = (props) => {
+  const {url, children, varian} = props
+  return (
+    <ButtonTheme 
+      url={url}
+      varian={`bg-white-500 border hover:bg-white-600 text-green-500 ${varian}`}>
+    {children}
+    </ButtonTheme>
+  );
+}
+
 export const ButtonYellow = (props) => {
   const {url, children, varian} = props
   return (

@@ -8,6 +8,7 @@ import { Card } from "../Elements/card";
 import { H1, H2 } from "../Elements/heading";
 import { ItemSpesification } from "../Fragments/ItemSpesification";
 import { CheckCircle, ChevronDown } from "lucide-react";
+import { TransactionNominal } from "../Fragments/TransactionNominal";
 
 const token = localStorage.getItem("token");
 const CheckoutPage = () => {
@@ -41,8 +42,11 @@ const HandleCheckout = (event) => {
 };
 
  return (
-    <Authlayout title="Home" navType="home" withFooter={false}>
+    <Authlayout title="Home" navType="home" withFooter={false} style={{paddingTop: "0"}} customHead={<img src="../assets/process_choose_payment.svg" className="w-100" />}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="p-2 mt-4 block md:hidden">
+                <img src="../assets/process_choose_payment_mobile.svg" className="w-full" />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 ...">
                 <div className="col-span-2 order-2 md:order-1">
                     <Card varian="md:mr-4">
@@ -94,26 +98,7 @@ const HandleCheckout = (event) => {
                         ))}
                     </Card>
                     <Card varian="md:mr-4 mt-4 py-6">
-                        <H1>Ringkasan Pesanan</H1><br />
-                        <div className="grid grid-cols-12">
-                            <div className="col-span-8">
-                                <p className="text-slate-600">Video Learning: Gapai Karier Impianmu sebagai Seorang UI/UX Designer & Product Manager. </p>
-                            </div>
-                            <div className="col-span-4 justify-self-end"><p>Rp 767.500</p></div>
-                        </div>
-                        <div className="grid grid-cols-12">
-                            <div className="col-span-8">
-                                <p className="text-slate-600">Biaya Admin</p>
-                            </div>
-                            <div className="col-span-4 justify-self-end"><p>Rp 7.000</p></div>
-                        </div>
-                        <hr className="mt-4 text-slate-400" />
-                        <div className="grid grid-cols-12 mt-4">
-                            <div className="col-span-8">
-                                <p className="font-bold">Total Pembayaran</p>
-                            </div>
-                            <div className="col-span-4 justify-self-end"><p className="price">Rp 774.500</p></div>
-                        </div>
+                        <TransactionNominal />
                         <ButtonPrimarySubmit onClick={HandleCheckout} varian="w-full mt-4">Beli Sekarang</ButtonPrimarySubmit>
                     </Card>
                 </div>

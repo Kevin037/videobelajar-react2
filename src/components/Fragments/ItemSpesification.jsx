@@ -30,7 +30,7 @@ export const ItemSpesification = (props) => {
             <H2 varian="mt-4">Kelas Ini Sudah Termasuk</H2>
             <div className="grid grid-cols-2 ...">
                 {facilities.length > 0 && facilities.map((facility) => (
-                    <div className="col-span-1 ... mt-3">
+                    <div className="col-span-1 ... mt-3" key={facility.id}>
                         <div className="grid grid-cols-4 ...">
                             <div className="col-span-1 ..."><img src={`../assets/`+facility.img} alt="" /></div>
                             <div className="col-span-3 ..."><p>{facility.name}</p></div>

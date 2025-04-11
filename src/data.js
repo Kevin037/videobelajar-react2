@@ -148,22 +148,27 @@ const courseSections = [
 
   const facilities = [
     {
+        id:1,
         img:"check.svg",
         name:"Ujian Akhir"
     },
     {
+        id:2,
         img:"video.svg",
         name:"49 Video"
     },
     {
+        id:3,
         img:"document.svg",
         name:"7 Dokumen"
     },
     {
+        id:4,
         img:"certificate.svg",
         name:"Sertifikat"
     },
     {
+        id:5,
         img:"pretest.svg",
         name:"Pretest"
     }
@@ -171,20 +176,26 @@ const courseSections = [
 
 const paymentMethods = {
     "Transfer Bank": [
-        { name: "Bank BCA", key: "bca", icon: "../assets/bca.svg" },
-        { name: "Bank BNI", key: "bni", icon: "../assets/bni.svg" },
-        { name: "Bank BRI", key: "bri", icon: "../assets/bri.svg" },
-        { name: "Bank Mandiri", key: "mandiri", icon: "../assets/mandiri.svg" },
+        { name: "Bank BCA", key: "bca", number:"11739 081234567890", icon: "../assets/bca.svg" },
+        { name: "Bank BNI", key: "bni", number:"11739 081234567890", icon: "../assets/bni.svg" },
+        { name: "Bank BRI", key: "bri", number:"11739 081234567890", icon: "../assets/bri.svg" },
+        { name: "Bank Mandiri", key: "mandiri", number:"11739 081234567890", icon: "../assets/mandiri.svg" },
     ],
     "E-Wallet": [
-        { name: "Dana", key: "dana", icon: "../assets/dana.svg" },
-        { name: "OVO", key: "ovo", icon: "../assets/ovo.svg" },
-        { name: "LinkAja", key: "linkaja", icon: "../assets/linkaja.svg" },
-        { name: "Shopee Pay", key: "shopee", icon: "../assets/shopee.svg" },
+        { name: "Dana", key: "dana", number:"", icon: "../assets/dana.svg" },
+        { name: "OVO", key: "ovo", number:"", icon: "../assets/ovo.svg" },
+        { name: "LinkAja", key: "linkaja", number:"", icon: "../assets/linkaja.svg" },
+        { name: "Shopee Pay", key: "shopee", number:"", icon: "../assets/shopee.svg" },
     ],
     "Kartu Kredit/Debit": [
-        { name: "", key: "credit", icon: "/assets/credit.svg" },
+        { name: "", key: "credit", number:"", icon: "/assets/credit.svg" },
     ]
+};
+
+const howToPay = {
+    "Transfer Bank": "Bayar dengan transfer bank",
+    "E-Wallet": "Bayar dengan e-wallet",
+    "Kartu Kredit/Debit": "Bayar dengan kartu kredit/debit",
 };
 
 export const getItem = (params) => {
@@ -216,6 +227,24 @@ export const getFacilities = () => {
     return facilities;
 }
 
-export const getPaymentMethods = () => {
-    return paymentMethods;
+export const getPaymentMethods = (key="") => {
+    if(key == "") { return paymentMethods; }
+
+    let found = null;
+    for (const group in paymentMethods) {
+        const method = paymentMethods[group].find(item => item.key === key);
+        if (method) {
+            found = method;
+            break;
+        }
+    }
+    return found;
+}
+
+export const getTransaction = () => {
+    return JSON.parse(localStorage.getItem("transaction"));
+}
+
+export const getHowToPay = () => {
+    return howToPay;
 }

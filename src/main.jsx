@@ -7,6 +7,7 @@ import RegisterPage from './components/Pages/register.jsx'
 import HomePage from './components/Pages/home.jsx'
 import ProductPage from './components/Pages/product.jsx'
 import CheckoutPage from './components/Pages/checkout.jsx'
+import PaymentPage from './components/Pages/payment.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/checkout',
     element: <CheckoutPage/>
+  },
+  {
+    path: '/payment',
+    element: <PaymentPage/>
   }
 ])
 
