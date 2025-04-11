@@ -49,7 +49,7 @@ const HandleCheckout = (event) => {
                 <div className="col-span-2 order-2 md:order-1">
                     <Card varian="md:mr-4">
                         <H1>Metode Pembayaran</H1><br />
-                        {paytmentMethods.map(([groupName, methods]) => (
+                        {Object.entries(paytmentMethods).map(([groupName, methods]) => (
                             <div key={groupName} className="bg-white rounded-xl shadow-sm">
                             <button
                                 className="w-full flex justify-between items-center px-4 py-3 font-medium mb-3"

@@ -8,7 +8,7 @@ import { HeadAuth } from "./Content";
 const FormRegister = () => {
     return (
     <div className="space p-10 overflow-sm-hidden">
-            <Card varian={`max-w-xl`}>
+            <Card varian={`max-w-xl mx-auto sm:px-6 lg:px-8`}>
             <HeadAuth 
                 title="Pendaftaran Akun" 
                 desc="Yuk, daftarkan akunmu sekarang juga!"

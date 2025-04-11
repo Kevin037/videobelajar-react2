@@ -21,7 +21,7 @@ const Formlogin = () => {
 
     return (
         <div className="space p-10 overflow-sm-hidden">
-            <Card varian={`max-w-sm`}>
+            <Card varian={`max-w-sm mx-auto sm:px-6 lg:px-8`}>
                 <HeadAuth 
                     title="Masuk ke Akun" 
                     desc="Yuk, lanjutin belajarmu di videobelajar."

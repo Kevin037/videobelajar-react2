@@ -5,7 +5,7 @@ const CardItems = (props) => {
     const {id,photo,title,desc,avatar,user,user_position,user_company} = props
     return (
         <Link to={`/product/`}>
-        <Card key={id} varian="max-w-sm">
+        <Card key={id} varian="mx-2 max-w-sm">
         <div className="grid grid-cols-3 md:grid-cols-1 ...">
             <div className="col-span-1 ...">
                 <img className="img-item" src={photo} alt="" />

@@ -8,7 +8,7 @@ function classNames(...classes) {
   }
 
 const Authlayout = (props) => {
-    const {children, navType, withFooter, varianHead, style, customHead} = props
+    const {children, navType, withFooter, varianHead, style, customHead=""} = props
     const handleLogout = () => {
       localStorage.removeItem("token");
       window.location.href = "/login";
