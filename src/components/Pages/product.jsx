@@ -29,6 +29,11 @@ const toggle = (index) => {
   setOpenIndex(openIndex === index ? null : index);
 };
 
+const strLimit = (str, limit) => {
+    if (!str) return "";
+    return str.length > limit ? str.substring(0, limit) + "..." : str;
+  };
+
  return (
     <Authlayout title="Home" navType="home" withFooter={true}>
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -45,14 +50,14 @@ const toggle = (index) => {
             </section>
 
             <div className="grid grid-cols-1 md:grid-cols-3 ...">
-                <div className="col-span-2 ...">
+                <div className="col-span-2 ... order-2 md:order-1">
                     <Card varian="md:mr-4">
                         <H1>Deskripsi</H1><br />
                         <p>Foundations of User Experience (UX) Design adalah yang pertama dari rangkaian tujuh kursus yang akan membekali Anda dengan keterampilan yang dibutuhkan untuk melamar pekerjaan tingkat pemula dalam desain pengalaman pengguna. Desainer UX fokus pada interaksi yang dilakukan orang dengan produk seperti situs web, aplikasi seluler, dan objek fisik. Desainer UX membuat interaksi sehari-hari itu dapat digunakan, menyenangkan, dan dapat diakses. Peran seorang desainer UX tingkat pemula mungkin termasuk berempati dengan pengguna, menentukan poin rasa sakit mereka, memunculkan ide untuk solusi desain, membuat wireframe, prototipe, dan maket, dan menguji desain untuk mendapatkan umpan balik.</p>
                     </Card>
                     <Card varian="md:mr-4 mt-4 py-6">
                         <H1>Belajar bersama Tutor Profesional</H1><br />
-                        <div className="grid grid-cols-2 ...">
+                        <div className="grid grid-cols-1 md:grid-cols-2 ...">
                             <div className="col-span-1 ...">
                                 <Card varian="md:mr-4">
                                     <div className="grid grid-cols-12 ...">
@@ -88,7 +93,8 @@ const toggle = (index) => {
                                 onClick={() => toggle(index)}
                                 className="w-full flex justify-between items-center text-green-600 font-semibold text-base focus:outline-none"
                             >
-                                <span>{section.title}</span>
+                                <span className="hidden md:block">{section.title}</span>
+                                <span className="block md:hidden">{strLimit(section.title, 35)}</span>
                                 {openIndex === index ? (
                                 <ChevronUp size={20} />
                                 ) : (
@@ -108,7 +114,7 @@ const toggle = (index) => {
                                         <div className="col-span-9">
                                             {lesson.title}
                                         </div>
-                                        <div className="col-span-3 flex justify-end">
+                                        <div className="col-span-3 flex justify-end hidden md:block">
                                             <div className="flex items-center gap-1">
                                                 <img src="../assets/play.svg" alt="" />
                                                 <span className="text-sm text-gray-800">Video</span>
@@ -126,7 +132,7 @@ const toggle = (index) => {
                         ))}
                     </Card>
                 </div>
-                <div className="col-span-1 ... mx-2 sm:mx-0">
+                <div className="col-span-1 ... mx-2 sm:mx-0 order-1 md:order-2">
                     <ItemSpesification isDetail={false} />
                 </div>
             </div>
